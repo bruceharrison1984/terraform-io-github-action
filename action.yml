@@ -1,5 +1,8 @@
 name: Get Terraform.io Workspace state
 description: Retrieve the state information for a given Terraform workspace
+branding:
+  icon: 'archive'
+  color: 'purple'
 inputs:
   organization:
     description: Terraform organization

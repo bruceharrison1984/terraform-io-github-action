@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get Terraform state
         id: tfState
-        uses: bruceharrison1984/terraform-io-github-action@v0.1
+        uses: bruceharrison1984/terraform-io-github-action@v1.0
         with:
           organization: ${{ secrets.TERRAFORM_IO_ORG }}
           workspace: ${{ secrets.TERRAFORM_IO_WORKSPACE }}
