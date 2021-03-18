@@ -1,0 +1,22 @@
+name: Get Terraform.io Workspace state
+description: Retrieve the state information for a given Terraform workspace
+inputs:
+  organization:
+    description: Terraform organization
+    required: true
+  workspace:
+    description: Terraform workspace
+    required: true
+  terraformApiToken:
+    description: API token for Terraform.io
+    required: true
+outputs:
+  tf_outputs:
+    description: Output values defined by the workspace
+  organization:
+    description: Organization state was retrieved from
+  workspace:
+    description: Workspace state was retrieved from
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

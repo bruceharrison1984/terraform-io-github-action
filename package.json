@@ -1,0 +1,27 @@
+{
+  "name": "terraform-io-github-action",
+  "version": "1.0.0",
+  "description": "GitHub Action for retrieving Terraform state information from Terraform.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruceharrison1984/terraform-io-github-action.git"
+  },
+  "author": "Bruce Harrison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bruceharrison1984/terraform-io-github-action/issues"
+  },
+  "homepage": "https://github.com/bruceharrison1984/terraform-io-github-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.27.0"
+  }
+}

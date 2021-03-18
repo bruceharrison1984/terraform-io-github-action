@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Terraform state
+        id: tfState
+        uses: bruceharrison1984/terraform-io-github-action@v0.1
+        with:
+          organization: ${{ secrets.TERRAFORM_IO_ORG }}
+          workspace: ${{ secrets.TERRAFORM_IO_WORKSPACE }}
+          terraformApiToken: ${{ secrets.TERRAFORM_IO_TOKEN }}
+      - name: Print the entire output
+        run: echo ${{ steps.tfState.outputs.tf_outputs }}
+      - name: Get specific value
+        run: echo "VALUE - $(echo '${{ steps.tfState.outputs.tf_outputs }}' | jq -r '.ecs_cluster_name')"
