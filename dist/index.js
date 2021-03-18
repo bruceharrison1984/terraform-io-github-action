@@ -3044,7 +3044,6 @@ void async function main() {
     core.setOutput("workspace", workspace);
 
     for (const output in outputs) {
-      console.log(`core.setOutput(${output}, ${outputs[output]});`)
       core.setOutput(output, outputs[output]);
     }
 
