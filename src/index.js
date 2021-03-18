@@ -27,6 +27,12 @@ void async function main() {
     core.setOutput("tf_outputs", outputs);
     core.setOutput("organization", organization);
     core.setOutput("workspace", workspace);
+
+    for (const output in outputs) {
+      console.log(`core.setOutput(${output}, ${outputs[output]});`)
+      core.setOutput(output, outputs[output]);
+    }
+
   } catch (error) {
     core.setFailed(error.message);
   }
