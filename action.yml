@@ -14,12 +14,14 @@ inputs:
     description: API token for Terraform.io
     required: true
 outputs:
-  tf_outputs:
-    description: Output values defined by the workspace
+  json:
+    description: Output values defined by the workspace in JSON format
   organization:
     description: Organization state was retrieved from
   workspace:
     description: Workspace state was retrieved from
+  dynamic_property:
+    description: Name defined by the Terraform output
 runs:
   using: 'node12'
   main: 'dist/index.js'

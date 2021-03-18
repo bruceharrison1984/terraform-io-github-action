@@ -33,10 +33,29 @@ jobs:
 | ------------------ | -------------------------------------------------------------- |
 | organization       | The name of the Terraform.io organization                      |
 | workspace          | The name of the Terraform.io workspace                         |
-| tf_outputs         | JSON encoded string of the output values                       |
+| json               | JSON encoded string of the output values                       |
+| <output_name>      | Value from the Terraform output                                |
 
-The outputs are JSON encoded, so it is up to you to extract the values from there. This is a limitation of
-GitHub actions only being able to handle `string, int, bool` values.
+### dynamic output values
+If you know the name of the output value, you can reference it directly in your GitHub action.
+```jq
+{
+  "ecs_cluster_name": "my-ecs-cluster",
+  "private_subnet_ids": [
+    "subnet-06dac358298756a1f",
+    "subnet-0fb87bce7d536cd85",
+    "subnet-0fce716bf1fd0059d"
+  ],
+}
+```
+
+```yaml
+  - name: Get specific value on purpose
+    run: echo ${{ steps.tfState.outputs.ecs_cluster_name }}
+```
+
+### json output
+The outputs are JSON encoded, so it is up to you to extract the values from there.
 
 `jq` is a resonable solution for extracting values from tf_outputs. Take the following tf_outputs:
 
