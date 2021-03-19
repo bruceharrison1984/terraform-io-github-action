@@ -27,7 +27,7 @@ jobs:
       - name: Get specific value on purpose
         run: echo ${{ steps.tfState.outputs.ecs_cluster_name }}
       - name: Get specific value from json
-        run: echo "VALUE - $(echo '${{ steps.tfState.outputs.tf_outputs }}' | jq -r '.ecs_cluster_name')"
+        run: echo "VALUE - $(echo '${{ steps.tfState.outputs.json }}' | jq -r '.ecs_cluster_name')"
 ```
 
 ## Outputs
