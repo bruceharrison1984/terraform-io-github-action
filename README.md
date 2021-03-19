@@ -55,9 +55,13 @@ If you know the name of the output value, you can reference it directly in your 
   - name: Get specific value on purpose
     run: echo ${{ steps.tfState.outputs.ecs_cluster_name }}
 ```
+It should be stated that if you are attempting to retrieve an array or object value, it will be returned as a string. This is a limitation in how
+GitHub Actions deals with types. It only support `string, bool, int` types. You will need to use some other process to transform your object/array in to the
+shape that you need. See the below `jq` example for some direction.
+
 
 ### json output
-The outputs are JSON encoded, so it is up to you to extract the values from there.
+The json output is JSON encoded, so it is up to you to extract the values from there.
 
 `jq` is a resonable solution for extracting values from tf_outputs. Take the following tf_outputs:
 
