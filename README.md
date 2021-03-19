@@ -23,7 +23,7 @@ jobs:
           workspace: ${{ secrets.TERRAFORM_IO_WORKSPACE }}
           terraformApiToken: ${{ secrets.TERRAFORM_IO_TOKEN }}
       - name: Print the entire output
-        run: echo ${{ steps.tfState.outputs.tf_outputs }}
+        run: echo ${{ steps.tfState.outputs.json }}
       - name: Get specific value on purpose
         run: echo ${{ steps.tfState.outputs.ecs_cluster_name }}
       - name: Get specific value from json
@@ -79,7 +79,7 @@ The json output is JSON encoded, so it is up to you to extract the values from t
 ```yaml
 ## Example Github action run command
   - name: Get specific value
-    run: echo "VALUE - $(echo '${{ steps.tfState.outputs.tf_outputs }}' | jq -r '.ecs_cluster_name')"
+    run: echo "VALUE - $(echo '${{ steps.tfState.outputs.json }}' | jq -r '.ecs_cluster_name')"
 ```
 
 The following would be output:
