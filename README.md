@@ -17,14 +17,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get Terraform state
         id: tfState
-        uses: bruceharrison1984/terraform-io-github-action@v1.0
+        uses: bruceharrison1984/terraform-io-github-action@v1.3
         with:
           organization: ${{ secrets.TERRAFORM_IO_ORG }}
           workspace: ${{ secrets.TERRAFORM_IO_WORKSPACE }}
           terraformApiToken: ${{ secrets.TERRAFORM_IO_TOKEN }}
       - name: Print the entire output
         run: echo ${{ steps.tfState.outputs.tf_outputs }}
-      - name: Get specific value
+      - name: Get specific value on purpose
+        run: echo ${{ steps.tfState.outputs.ecs_cluster_name }}
+      - name: Get specific value from json
         run: echo "VALUE - $(echo '${{ steps.tfState.outputs.tf_outputs }}' | jq -r '.ecs_cluster_name')"
 ```
 

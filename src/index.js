@@ -24,7 +24,7 @@ void async function main() {
     const rawWorkspaceState = await terraformIoClient.get(`${newestWorkspace}?include=outputs`);
     const outputs = Object.assign({}, ...rawWorkspaceState.data.included.map(x => ({ [x.attributes.name]: x.attributes.value })));
 
-    core.setOutput("tf_outputs", outputs);
+    core.setOutput("json", outputs);
     core.setOutput("organization", organization);
     core.setOutput("workspace", workspace);
 
