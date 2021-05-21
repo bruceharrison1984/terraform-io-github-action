@@ -86,3 +86,5 @@ The following would be output:
 ```sh
  > VALUE - my-ecs-cluster
 ```
+
+The Github Action function `fromJson` can also be used to convert JSON strings in to parsable objects.
